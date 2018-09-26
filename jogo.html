@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Jogo</title>
+
+<style>
+    
+    
+    html {
+        font-size:16px;
+    }
+    body {
+        font: normal 100% Helvetica, Arial, sans-serif;
+        background-color: #7B68EE;
+    }
+    h1 {
+        font-size: 1.5em; /* 24px / 16px = 1.5em */
+    }
+   
+    
+</style>
+<script>
+       
+       function fnJogar(usuario){
+        
+        var vencedor  = ""; 
+        var sorteio = Math.random();
+        
+                
+        if (sorteio <= 0.33) computador = "Tesoura";
+        if (sorteio > 0.33 && sorteio <= 0.67) computador = "Pedra";
+        if (sorteio > 0.67) computador = "Papel";
+        
+              
+        if (usuario == computador) {
+            vencedor = "Empatou!";
+            
+        }
+        else {
+
+            if ( (usuario == "Pedra" && computador == "Tesoura") ||
+                 (usuario == "Tesoura" && computador == "Papel") ||
+                 (usuario == "Papel" && computador == "Pedra") ){
+            
+                vencedor = "Você Venceu!";
+            } 
+            else { 
+                vencedor = "O Computador Venceu!";
+            };
+            
+        };
+
+
+        document.getElementById("resultado").innerHTML = "Você escolheu " + usuario + " e computador escolheu " + computador + ". " + vencedor;
+    }    
+    
+</script>
+</head>
+<body>
+ 
+ <h1>Escolha uma opção</h1><br>
+ <button type="button" onclick="fnJogar(this.innerHTML);" style="width: 80px; height: 30px">PEDRA</button>
+ <button type="button" onclick="fnJogar(this.innerHTML);" style="width: 80px; height: 30px">TESOURA</button>
+ <button type="button" onclick="fnJogar(this.innerHTML);" style="width: 80px; height: 30px">PAPEL</button>
+
+<br>
+<p>Pedra quebra tesoura.</p>
+<p>Tesoura corta papel.</p>
+<p>Papel cobre a pedra.</p>
+<br><br>
+<p id="resultado"></p>
+
+</body>
+</html>
